@@ -8,7 +8,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.conflate
 
 @ExperimentalCoroutinesApi
 class DataMotionDetector(
@@ -27,7 +26,7 @@ class DataMotionDetector(
             trySend(res).isSuccess
           }
           Sensor.TYPE_GYROSCOPE -> {
-            val res = MotionResult.GyroscopeResult(event.values)
+            val res = MotionResult.GyroscopeResult(event.values, event.timestamp)
             trySend(res).isSuccess
           }
         }

@@ -6,5 +6,5 @@ sealed class DeviceMotionResult {
   object MovingIn : DeviceMotionResult()
   object MovingOut : DeviceMotionResult()
   object ShakeDetected : DeviceMotionResult()
-  object OtherMovements : DeviceMotionResult()
+  object NoMotionEvent : DeviceMotionResult()
 }

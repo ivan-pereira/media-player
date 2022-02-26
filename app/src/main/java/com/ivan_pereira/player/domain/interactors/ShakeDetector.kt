@@ -2,7 +2,7 @@ package com.ivan_pereira.player.domain.interactors
 
 import com.ivan_pereira.player.data.MotionResult.AccelerometerResult
 import com.ivan_pereira.player.domain.events.DeviceMotionResult
-import com.ivan_pereira.player.domain.events.DeviceMotionResult.OtherMovements
+import com.ivan_pereira.player.domain.events.DeviceMotionResult.NoMotionEvent
 import com.ivan_pereira.player.domain.events.DeviceMotionResult.ShakeDetected
 import javax.inject.Inject
 
@@ -30,6 +30,6 @@ class ShakeDetector @Inject constructor() {
       return ShakeDetected
     }
 
-    return OtherMovements
+    return NoMotionEvent
   }
 }

@@ -1,19 +1,15 @@
 package com.ivan_pereira.player.presentation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.google.android.exoplayer2.ui.PlayerView
 import com.ivan_pereira.player.R.id
 import com.ivan_pereira.player.R.layout
 import com.ivan_pereira.player.domain.MediaPlayer
-import com.ivan_pereira.player.domain.events.DeviceMotionEvent
 import com.ivan_pereira.player.domain.interactors.InitMediaPlayer
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 @InternalCoroutinesApi
@@ -21,16 +17,12 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
   @Inject
-  lateinit var player : MediaPlayer
-
-  @Inject
-  lateinit var deviceMotionEvent: DeviceMotionEvent
+  lateinit var player: MediaPlayer
 
   @Inject
   lateinit var initMediaPlayer: InitMediaPlayer
 
-  val mainViewModel: MainViewModel by viewModels()
-
+  private val viewModel: MainViewModel by viewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -38,17 +30,7 @@ class MainActivity : AppCompatActivity() {
     this.setFullScreen()
     this.hideActionBar()
     val playerView = findViewById<PlayerView>(id.exoPlayer)
-
-    lifecycleScope.launchWhenCreated {
-//      sensor.collect {
-//        Log.d("DEBUG_TAG", "onCreate: $it")
-//      }
-
-      deviceMotionEvent.onNewMotionEvent().collect {
-        Log.d("DEBUG_TAG_MOTION", "onCreate: ${it.javaClass.simpleName}")
-      }
-    }
-
+    viewModel.init()
     initMediaPlayer.with(playerView)
   }
 

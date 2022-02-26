@@ -14,7 +14,7 @@ class MainViewModel @Inject constructor(
   private val deviceEventsDelegate: DeviceEventsDelegate
 ) : ViewModel() {
 
-  fun init(){
+  fun init() {
     viewModelScope.launch {
       deviceEventsDelegate.subscribeLocationEvents()
       deviceEventsDelegate.subscribeMotionEvents()

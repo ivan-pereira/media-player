@@ -47,7 +47,7 @@ class ExoPlayerIntegration(
   }
 
   override fun pause() {
-    if (player.isPlaying) {
+    onPlayerPlaying {
       player.pause()
     }
   }
@@ -57,18 +57,32 @@ class ExoPlayerIntegration(
   }
 
   override fun increaseVolume() {
-    player.increaseDeviceVolume()
+    onPlayerPlaying {
+      player.increaseDeviceVolume()
+    }
   }
 
   override fun decreaseVolume() {
-    player.decreaseDeviceVolume()
+    onPlayerPlaying {
+      player.decreaseDeviceVolume()
+    }
   }
 
   override fun increaseTime() {
-    player.seekForward()
+    onPlayerPlaying {
+      player.seekForward()
+    }
   }
 
   override fun decreaseTime() {
-    player.seekBack()
+    onPlayerPlaying {
+      player.seekBack()
+    }
+  }
+
+  private fun onPlayerPlaying(action: () -> Unit) {
+    if (player.isPlaying) {
+      action()
+    }
   }
 }

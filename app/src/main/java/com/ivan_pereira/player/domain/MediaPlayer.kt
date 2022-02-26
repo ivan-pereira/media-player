@@ -4,7 +4,7 @@ import android.view.View
 
 interface MediaPlayer {
 
-  fun setView(view : View)
+  fun setView(view: View)
   fun setSource(source: String)
   fun init()
 

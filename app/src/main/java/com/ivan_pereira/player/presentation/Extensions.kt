@@ -8,7 +8,7 @@ import android.view.WindowInsetsController
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 
-fun Activity.setFullScreen(){
+fun Activity.setFullScreen() {
   when {
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.P -> {
       window.attributes.layoutInDisplayCutoutMode =
@@ -33,6 +33,6 @@ fun Activity.setFullScreen(){
   }
 }
 
-fun AppCompatActivity.hideActionBar(){
+fun AppCompatActivity.hideActionBar() {
   this.supportActionBar?.hide()
 }

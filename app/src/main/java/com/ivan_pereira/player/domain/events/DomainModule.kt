@@ -1,6 +1,5 @@
 package com.ivan_pereira.player.domain.events
 
-import com.ivan_pereira.player.PlayerApplication_HiltComponents.SingletonC
 import com.ivan_pereira.player.data.DataMotionDetector
 import com.ivan_pereira.player.domain.interactors.DeviceMotionEventsController
 import com.ivan_pereira.player.domain.interactors.RotationDetector
@@ -22,6 +21,6 @@ object DomainModule {
     shakeDetector: ShakeDetector,
     rotationDetector: RotationDetector
   ): DeviceMotionEvent {
-    return DeviceMotionEventsController(dataMotionDetector,shakeDetector,rotationDetector)
+    return DeviceMotionEventsController(dataMotionDetector, shakeDetector, rotationDetector)
   }
 }

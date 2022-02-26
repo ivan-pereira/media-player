@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocationEvent {
 
-  fun subscribeLocationEvents() : Flow<Location>
+  fun subscribeLocationEvents(): Flow<Location>
 }
